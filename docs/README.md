@@ -36,7 +36,19 @@
 * **area(a, b, c)** - Функция нахождения плошади треугольника: принимает числа a, b - стороны треугольника, и c - угол между этими сторонами, возвращает половину произведения a, b и синуса угла c. Пример вызова функции: **print(area(2, 4, 30))** ==> **2**
 * **perimeter(a, b, c)** - Функция нахождения периметра треугольника: принимает числа a, b, c - стороны треугольника, возвращает сумму a, b, c. Пример вызова функции: **print(perimeter(2, 3, 4))** ==> **9**
 
-## История изменения проекта
+## История изменения проекта (обновленная версия)
+C:\Users\Анастасия\Desktop\geometric_lib>git log
+commit e65c087d086af039ba306e8b259ea626b2ced6c1 (HEAD -> unittest)
+Author: Nactac20 <nactac20@gmail.com>
+Date:   Fri Nov 17 02:36:22 2023 +0300
+
+    Добавлены unittests для файлов
+
+commit 2d0b4a1021c51af0de16ff1e7577536fd8a6c87c
+Author: Nactac20 <nactac20@gmail.com>
+Date:   Fri Nov 17 02:30:09 2023 +0300
+
+    Добавлена модификации файлов
 commit 9f8bd933a5fffe5a780d5711a90327feead468d4 (HEAD -> new_doc)
 Author: Nactac20 <nactac20@gmail.com>
 Date:   Thu Oct 5 22:39:27 2023 +0300
@@ -66,43 +78,69 @@ Author: smartiqa <info@smartiqa.ru>
 Date:   Thu Mar 4 14:55:29 2021 +0300
 
     L-03: Docs added
-commit e74fd9ac3e18fb75f46c6648a7318f8229dd24b3 (HEAD -> unittestt)
-Author: Nactac20 <nactac20@gmail.com>
-Date:   Thu Nov 2 22:22:33 2023 +0300
-
-    Добавлен unittest для каждого файла
-
-# Результаты unittest
+# Создание unittests
+Тесты создавались с целью протестировать программы и их функции. 
+Все тесты проверяют корректность работы программ при вводе валидового, нулевого, отрицательного, строкового, булевого значений
+# Результаты unittests
 ## circle.py
-| Радиус a | Площадь | Периметр |
-|---|---|----------|
-| 0 | 0 | 0        |
-| 1 | π | 2π       |
+| Радиус a | Площадь (ожидаемый результат) | Периметр (ожидаемый результат)    | Площадь (фактический результат) | Периметр (фактический результат)|
+|------|-------------------------------|-----------------------------------|---------------------------------|----------------|
+| 3    | 9π                            | 6π                                | 9π                              |6π|
+| -2   | error                         | error                             | error                           |error|
+| 2.5  | 6.25π                         | 5π                                | 6.25π                           |5π|
+| 0    | impossible to calculate area  | impossible to calculate perimeter | impossible to calculate area    |impossible to calculate perimeter|
+| True | error                         | error                             | error                           |error|
+| fgd  | error                         | error                             | error                           |error|
 
 ## rectangle.py
-| Сторона a | Сторона b | Площадь | 
-|-----------|---|---------|
-| 0         | 10 | 0       |
-| 1         | 1 | 1       |
+| Сторона a | Сторона b | Площадь (ожидаемый результат) | Площадь (фактический результат)|
+|-----------|----------|-------------------------------|---------------------------|
+| 3         | 4        | 12                            |12|
+| -2        | 0        | impossible to calculate area  |impossible to calculate area|
+| 2.5       | 6.25     | 15.625                        |15.625|
+| 0         | 0        | impossible to calculate area  |impossible to calculate area|
+| -2.5      | -1       | error                         |error|
+| True      | -1       | error                         |error|
+| 'fgd'     | 1        | error                         |error|
 
-| Сторона a | Сторона b | Периметр | 
-|---|-----------|----------|
-| 10 | 10        | 40       |
-| 100 | 100       | 400      |
+| Сторона a | Сторона b | Периметр (ожидаемый результат) | Периметр (фактический результат)  |
+|-----------|----------|--------------------------------|-----------------------------------|
+| 1         | 4        | 10                             | 10                                |
+| -10       | 6        | error                          | error                             |
+| 3.5       | 12       | 31                             | 31                                |
+| 0         | 0        | impossible to calculate perimeter| impossible to calculate perimeter |
+| -2.5      | -4       | error                          | error                             |
+| True      | -1       | error                          | error                             |
+| 'fgd'      | 1        | error                          | error                             |
 
 ## square.py
-| Сторона a | Площадь | Периметр |
-|---|---|----------|
-| 0 | 0 | 0        |
-| 1 | 1 | 4        |
-
+| Сторона a | Площадь (ожидаемый результат) | Периметр (ожидаемый результат)    |Площадь (фактический результат) | Периметр (фактический результат) |
+|-----------|-------------------------------|-----------------------------------|-------------------------------------------------|-----------------|
+| 3         | 9                             | 12                                |9|12|
+| -2        | error                         | error                             |error|error|
+| 2.5       | 6.25                          | 10                                |6.25|10|
+| 0         | impossible to calculate area  | impossible to calculate perimeter |impossible to calculate area|impossible to calculate perimeter|
+| True      | error                         | error                             |error|error|
+| 'fgd'      | error                         | error                             |error|error|
 ## triangle.py
-| Сторона a | Высота h | Площадь |
-|---|---|---------|
-| 0 | 0 | 0       |
-| 1 | 1 | 0.5     | 
+| Сторона a | Высота h | Площадь (ожидаемый результат) | Площадь (фактический результат)|
+|-----------|---|-------------------------------|------------------|
+| 1         | 3 | 1.5                             |1.5|
+| -2        | 0 | impossible to calculate area| impossible to calculate area |
+| 3.5       |4|7|7|
+|0|2.5|impossible to calculate area|impossible to calculate area |
+|-2.5|-6|error|error|
+|0|0|impossible to calculate area |impossible to calculate area |
+|True|1|error|error|
+|'fgd'|-2|error|error|
 
-| Сторона a | Сторона b | Сторона c| Периметр |
-|-----------|---|---|----------|
-| 0         | 0 | 0 | 0        |
-| 1         | 2 | 2 | 4        |
+
+| Сторона a | Сторона b | Сторона c| Периметр (ожидаемый результат) | Периметр (фактический результат)|
+|-----------|-----------|---|--------------------------------|----------------|
+| 1         | 3         | 5 | not triangle | not riangle|
+| -10         | 0         | 5.4 | impossible to calculate perimeter  |impossible to calculate perimeter|
+|0| 0         |0|impossible to calculate perimeter|impossible to calculate perimeter|
+|3| 5         |2|10|10|
+|2.5| 3.5       |6|12|12|
+|True| 1         |-1|error|error|
+|'fgd'| 8         |-9|error|error|
